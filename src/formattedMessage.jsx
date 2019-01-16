@@ -2,7 +2,6 @@ import React from 'react';
 import getSafe from 'lodash/get';
 
 function carriageReturn(str) {
-  // @TODO: Refactor with formattedMessage
   const result = [];
   const lines = str.split('\r\n');
   if (lines.length === 1) return str;
@@ -27,26 +26,16 @@ function carriageReturn(str) {
  */
 
 export default function formattedMessage(vocabulary, id, defaultMessage = '', values = {}) {
-  const message = getSafe((vocabulary || {}), `${id}`, defaultMessage);
-  const replacements = message.match(/((\{{1,1}([a-z0-9]+)\}{1,1}))/ig) || []; // Search for a {valuesKey}
-  return replacements
-    .reduce((acc, val) => {
-      const replacementStr = acc.pop(); // Restore last unmodified string from reducer
-      // Define range to cut the replacement variable
-      const from = replacementStr.indexOf(val);
-      const to = from + val.length;
+  const msg = getSafe((vocabulary || {}), `${id}`, defaultMessage);
 
-      const before = carriageReturn(replacementStr.slice(0, from)); // Copy Text (before) replaceable variable
-      const replKey = replacementStr.slice(from, to); // Copy replaceable variable
-      const end = replacementStr.slice(to); // Get everything after variable
+  return msg.split(/{([^}]+)}/g).map((item, idx) => {
+    let replacement = null;
 
-      // Insert Text (before), replaceable variable and Text (after) to the reducer
-      if (before) acc.push(before);
-      if (val) {
-        const key = replKey.replace(/(\{|\})/g, '');
-        acc.push(values[key] || replKey);
-      }
-      if (end) acc.push(end);
-      return acc;
-    }, [message]);
+    if (idx % 2 === 1) {
+      replacement = values[item];
+      return typeof replacement === 'string' ? carriageReturn(replacement) : replacement;
+    }
+
+    return carriageReturn(item);
+  });
 }

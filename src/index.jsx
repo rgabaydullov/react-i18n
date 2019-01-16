@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import FormattedMessage from './TranslationFormattedMessage';
 import withTranslation from './withTranslation';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
   route: PropTypes.string.isRequired,
+  fetch: PropTypes.func.isRequired,
 };
 
 const defaultState = {
@@ -29,9 +29,9 @@ class Translation extends Component {
   }
 
   initLanguage = () => {
-    const { route } = this.props;
+    const { route, fetch } = this.props;
     const { lang } = defaultState;
-    axios.get(`${route}/${lang}`)
+    fetch(`${route}/${lang}`)
       .then(({ data: { result: { messages } } }) => {
         this.updateLang(lang, messages);
       });
