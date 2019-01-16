@@ -23,14 +23,15 @@ const { Provider, Consumer } = TranslationContext;
 class Translation extends Component {
   state = defaultState;
 
-  constructor(props) {
-    super(props);
-    this.initLanguage();
+  componentDidMount() {
+    const { initLanguage } = this;
+    initLanguage();
   }
 
   initLanguage = () => {
     const { route, fetch } = this.props;
     const { lang } = defaultState;
+
     fetch(`${route}/${lang}`)
       .then(({ data: { result: { messages } } }) => {
         this.updateLang(lang, messages);
