@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "FormattedMessage", {
   enumerable: true,
   get: function get() {
-    return _TranslationFormattedMessage.default;
+    return _TranslatedFormattedMessage.default;
   }
 });
 Object.defineProperty(exports, "withTranslation", {
@@ -21,7 +21,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _TranslationFormattedMessage = _interopRequireDefault(require("./TranslationFormattedMessage"));
+var _TranslatedFormattedMessage = _interopRequireDefault(require("./TranslatedFormattedMessage"));
 
 var _withTranslation = _interopRequireDefault(require("./withTranslation"));
 

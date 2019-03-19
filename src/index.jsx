@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import FormattedMessage from './TranslationFormattedMessage';
+import FormattedMessage from './TranslatedFormattedMessage';
 import withTranslation from './withTranslation';
 
 const propTypes = {
