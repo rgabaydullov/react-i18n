@@ -1,0 +1,39 @@
+{
+  "name": "react-i18n",
+  "version": "1.0.0",
+  "description": "Light-weight translation which only replaces accordingly vocabular",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rshtg/react-i18n.git"
+  },
+  "keywords": [
+    "react",
+    "i18n",
+    "translation",
+    "localization",
+    "locale"
+  ],
+  "author": "Rishat Gabaydullov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rshtg/react-i18n/issues"
+  },
+  "homepage": "https://github.com/rshtg/react-i18n#readme",
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0"
+  }
+}

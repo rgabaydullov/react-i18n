@@ -1,5 +1,5 @@
 import React from 'react';
-import getSafe from 'lodash/get';
+import getSafe from 'lodash.get';
 
 function carriageReturn(str) {
   const result = [];
